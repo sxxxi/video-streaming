@@ -1,0 +1,12 @@
+services:
+  vid-stream:
+    build: 
+      context: ../../
+      dockerfile: docker/dev/Dockerfile.dev
+    env_file:
+      - .env
+    volumes:
+      - ../../src:/app/src
+      - ../../res:/app/res
+    ports:
+      - 3000:3000

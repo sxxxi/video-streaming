@@ -1,0 +1,12 @@
+FROM node:latest as base
+
+FROM base as installer
+WORKDIR /app
+COPY ../../package.json .
+RUN npm install
+# ENTRYPOINT [ "ls" ]
+
+FROM base as watcher
+WORKDIR /app
+COPY --from=installer /app/node_modules /app/node_modules
+ENTRYPOINT npx nodemon /app/src/index.ts

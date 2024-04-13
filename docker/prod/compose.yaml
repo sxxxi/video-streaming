@@ -1,0 +1,11 @@
+services:
+  vid-stream:
+    build:
+      context: ../..
+      dockerfile: docker/prod/Dockerfile
+    volumes:
+      - ../../res:/app/res    # Omit on deploy plz, thank
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
