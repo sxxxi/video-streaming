@@ -21,7 +21,8 @@ app.get("/video", (req: Request, res: Response) => {
   fs.stat(path, (err, stats) => {
     if (err) {
       console.error(err.message);
-      res.send("Fuck");
+
+      res.send("Internal Error");
     }
 
     res.writeHead(200, {
